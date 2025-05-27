@@ -1,0 +1,6 @@
+.c-lista-chiste img {
+  width: 2000px;  /* Tamaño fijo en ancho */
+  height: 200px; /* Tamaño fijo en alto */
+  object-fit: cover; /* Ajusta la imagen sin perder proporciones */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+}

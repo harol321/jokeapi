@@ -1,5 +1,8 @@
-import './style.css';
+import './Categoria.css';
 import { useParams } from 'react-router-dom';
+
+function Categoria({ onFavorito }) {
+  const { tipo } = useParams();
 
 const chistes = [
   { id: 1, categoria: 'borrachos', imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR2QM6BZWMvwkfWzWxSCjQP-q1x6Y6o4L4Xg&s' },
@@ -9,8 +12,8 @@ const chistes = [
   { id: 5, categoria: 'borrachos', imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMyo4F-j2Rr3kY3FxDRbVJKpy9sbtnQQ-M4Nozvu0qARB-6w7gO-5zLR1tLdBJcn7_xFc&usqp=CAU' },
 { id: 6, categoria: 'borrachos', imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSid2dEQ2gCF5vxxwlqP3rlYYNCInGAcBighk8Wp3EjkHtLfli1mUztizCA4TgpQbbI66E&usqp=CAU' },
 { id: 7, categoria: 'borrachos', imagen: 'https://www.chistegenial.com/wp-content/uploads/2018/01/chiste-un-borracho-llama-a-su-novio.jpg' },
-{ id: 8, categoria: 'borrachos', imagen: 'https://pbs.twimg.com/media/EUyphtbWoAIWy5K.jpg:large' },
-{ id: 9, categoria: 'borrachos', imagen: 'https://i.pinimg.com/474x/88/c7/94/88c79487f735175b637736eda7245bac.jpg' },
+{ id: 8, categoria: 'borrachos', imagen: 'https://pbs.twihttps://i.pinimg.com/474x/88/c7/94/88c79487f735175b637736eda7245bac.jpgmg.com/media/EUyphtbWoAIWy5K.jpg:large' },
+{ id: 9, categoria: 'borrachos', imagen: '' },
 { id: 10, categoria: 'borrachos', imagen: 'https://i.pinimg.com/236x/9e/f9/0d/9ef90dff3969cc69e64e3c3b6116cd74.jpg' },
 { id: 11, categoria: 'ninos', imagen: 'https://cdn.babysits.com/content/community/community-resources/co/sal-chicha.jpg' },
 { id: 12, categoria: 'ninos', imagen: 'https://i.pinimg.com/originals/bf/56/5a/bf565a9bf735acf7a5580ea59ce36054.jpg' },
@@ -44,17 +47,15 @@ const chistes = [
 { id: 40, categoria: 'animales', imagen: 'https://cdn.babysits.com/content/community/community-resources/co/pata-y-pato.jpg' },
 
   ];
+const filtrados = chistes.filter(c => c.categoria === tipo);
 
-function Categoria() {
-  const { tipo } = useParams();
-
-  const filtrados = chistes.filter(c => c.categoria === tipo);
 
   return (
     <div className="c-lista">
       {filtrados.map(chiste => (
         <div className="c-lista-chiste" key={chiste.id}>
           <img src={chiste.imagen} alt={`Chiste ${chiste.id}`} width="200" />
+          <button onClick={() => onFavorito(chiste)}>Agregar a Favoritos</button>
         </div>
       ))}
     </div>
